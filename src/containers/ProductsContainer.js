@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from "styled-components"
+import { FaShoppingCart } from 'react-icons/fa';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import ProductsList from "../components/ProductsList"
 import Basket from '../components/Basket';
@@ -40,6 +41,11 @@ const ProductsContainer = ({addItemToBasket, itemsInBasket, basketTotal}) => {
         
     ]
 
+    
+    const CartIcon = () => {
+        return <FaShoppingCart/>
+    }
+
 
     return(
         <>
@@ -54,7 +60,7 @@ const ProductsContainer = ({addItemToBasket, itemsInBasket, basketTotal}) => {
                             <p>Shopping total: £{basketTotal}</p>
                         </footer>
                         
-                        <Link to="/basket">View basket?</Link>
+                        <Link to="/basket">View basket? <CartIcon/></Link>
                     </>
                     : null
                 }

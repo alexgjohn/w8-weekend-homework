@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 import ProductsContainer from './ProductsContainer';
 import Basket from "../components/Basket";
 import Home from "../components/Home";
+import Checkout from "../components/Checkout";
 import NavBar from "../components/NavBar";
+
 
 const RouterContainer = () => {
 
@@ -29,7 +31,23 @@ const RouterContainer = () => {
         setItemsInBasket(updatedItems)
         updateBasketTotal()
         
+    }
 
+
+//think i need to refactor the below to take in an id, which means each product/item needs an id.
+    const removeItemFromBasket = (index) => {
+        const updatedItems = itemsInBasket.filter((item) => {
+            return item.index !== index
+        })
+        setItemsInBasket(updatedItems)
+        console.log(`item was removed from basket`)
+    }
+
+    const clearBasket = () => {
+        const emptyBasket = []
+        setItemsInBasket(emptyBasket)
+        updateBasketTotal()
+        console.log("Basket cleared!")
     }
 
 
@@ -42,15 +60,21 @@ const RouterContainer = () => {
                         itemsInBasket={itemsInBasket} 
                         addItemToBasket={addItemToBasket}
                         basketTotal={basketTotal}
-                        updateBasketTotal={updateBasketTotal}
+                    
                         />}
                     />
                     <Route path="/basket" element={<Basket 
                         itemsInBasket={itemsInBasket}
                         basketTotal={basketTotal}
+                        removeItemFromBasket={removeItemFromBasket}
                         />}
                     />
                     <Route path="/" element={<Home/>}/>
+                    <Route path="/checkout" element={<Checkout 
+                        clearBasket={clearBasket}
+                        basketTotal={basketTotal}
+                        />}
+                    />
                 </Routes>
 
         </Router>
