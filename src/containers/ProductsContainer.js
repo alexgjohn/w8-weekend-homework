@@ -9,21 +9,8 @@ const BrowseHeader = styled.h1`
     text-align: center;
 `
 
-const CircusShopContainer = () => {
+const ProductsContainer = ({addItemToBasket, itemsInBasket, basketTotal}) => {
 
-
-    //need to declare state for the items in basket
-    const [itemsInBasket, setItemsInBasket] = useState([]);
-
-
-    //need functions for adding items to basket
-    const addItemToBasket = (product) => {
-        console.log(`Added ${product.name} to basket.`)
-        const updatedItems = [...itemsInBasket, product]
-        setItemsInBasket(updatedItems)
-
-        console.log(itemsInBasket)
-    }
 
     const products = [
         {
@@ -60,17 +47,22 @@ const CircusShopContainer = () => {
 
             <main>
                 <BrowseHeader>Browse our items</BrowseHeader>
-                <ProductsList products={products} addItemToBasket={addItemToBasket}/>
                 {itemsInBasket.length ? 
                     <>
-                        <footer>You have {itemsInBasket.length} items in the basket.</footer>
-                        {/* <Link to="/basket">View basket?</Link> */}
+                        <footer>
+                            <p>You have {itemsInBasket.length} items in the basket.</p>
+                            <p>Shopping total: £{basketTotal}</p>
+                        </footer>
+                        
+                        <Link to="/basket">View basket?</Link>
                     </>
                     : null
                 }
+                <ProductsList products={products} addItemToBasket={addItemToBasket}/>
+                
             </main>
         </>
     )
 }
 
-export default CircusShopContainer
+export default ProductsContainer

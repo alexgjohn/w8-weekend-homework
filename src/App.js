@@ -1,7 +1,7 @@
 
 
 import Header from './components/Header';
-import CircusShopContainer from './containers/CircusShopContainer';
+import CircusShopContainer from './containers/ProductsContainer';
 import RouterContainer from './containers/RouterContainer';
 
 function App() {

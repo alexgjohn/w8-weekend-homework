@@ -13,7 +13,7 @@ const ProductImage = styled.img`
     width: 220px;
 `
 
-const Product = ({product, addItemToBasket}) => {
+const Product = ({product, addItemToBasket, updateBasketTotal}) => {
 
     const handleClick = () => {
         console.log(`${product.name} got clicked!`)
