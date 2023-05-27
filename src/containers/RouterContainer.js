@@ -12,6 +12,7 @@ const RouterContainer = () => {
 
     const [itemsInBasket, setItemsInBasket] = useState([]);
     const [basketTotal, setBasketTotal] = useState(0)
+    const [userAnswer, setUserAnswer] = ("") 
 
     useEffect(() => {
         updateBasketTotal();

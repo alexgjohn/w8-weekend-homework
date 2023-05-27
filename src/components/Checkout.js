@@ -12,6 +12,7 @@ const BuyButton = styled.button`
 `
 
 const Checkout = ({basketTotal, clearBasket, applyDiscount}) => {
+    
 
     const navigate = useNavigate()
 
