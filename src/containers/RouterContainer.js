@@ -5,6 +5,7 @@ import Basket from "../components/Basket";
 import Home from "../components/Home";
 import Checkout from "../components/Checkout";
 import NavBar from "../components/NavBar";
+import ThankYou from "../components/ThankYou";
 
 
 const RouterContainer = () => {
@@ -26,28 +27,33 @@ const RouterContainer = () => {
     }
 
     const addItemToBasket = (product) => {
-        console.log(`Added ${product.name} to basket.`)
+        product.id = Date.now()
         const updatedItems = [...itemsInBasket, product]
         setItemsInBasket(updatedItems)
         updateBasketTotal()
         
     }
 
+    const applyDiscount = () => {
+        const discountedTotal = (basketTotal * 0.8)
+        setBasketTotal(discountedTotal)
+    }
+
 
 //think i need to refactor the below to take in an id, which means each product/item needs an id.
-    const removeItemFromBasket = (index) => {
+    const removeItemFromBasket = (id) => {
         const updatedItems = itemsInBasket.filter((item) => {
-            return item.index !== index
+            return String(item.id) !== String(id)
         })
         setItemsInBasket(updatedItems)
-        console.log(`item was removed from basket`)
+        updateBasketTotal()
+
     }
 
     const clearBasket = () => {
         const emptyBasket = []
         setItemsInBasket(emptyBasket)
         updateBasketTotal()
-        console.log("Basket cleared!")
     }
 
 
@@ -73,8 +79,10 @@ const RouterContainer = () => {
                     <Route path="/checkout" element={<Checkout 
                         clearBasket={clearBasket}
                         basketTotal={basketTotal}
+                        applyDiscount={applyDiscount}
                         />}
                     />
+                    <Route path="/thank-you" element={<ThankYou/>}/>
                 </Routes>
 
         </Router>

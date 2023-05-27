@@ -6,7 +6,7 @@ const StyledList = styled.ul`
     flex-wrap: wrap;
     list-style: none;
     justify-content: center;
-    background-color: palegreen;
+    background-color: #d0f4ef;
     /* align-self: center; */
 `
 

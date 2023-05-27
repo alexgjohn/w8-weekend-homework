@@ -1,16 +1,33 @@
+import styled from "styled-components"
 import {Link} from "react-router-dom"
+import { FaHome } from 'react-icons/fa';
+import { TbBuildingCircus } from "react-icons/tb";
+
+const StyledNavBar = styled.ul`
+    list-style: none;
+    text-align: center;
+`
 
 const NavBar = () => {
 
+    const HomeIcon = () => {
+        return <FaHome/>
+    }
+
+    const CircusIcon = () => {
+        return <TbBuildingCircus/>
+    }
+
+
     return(
-        <ul>
+        <StyledNavBar>
             <li>
-                <Link to="/">Home</Link>
+                <Link to="/">Home <HomeIcon/></Link>
             </li>
             <li>
-                <Link to="/products">Products</Link>
+                <Link to="/products">Products <CircusIcon/></Link>
             </li>
-        </ul>
+        </StyledNavBar>
     )
 }
 

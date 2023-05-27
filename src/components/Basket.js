@@ -2,6 +2,16 @@ import styled from "styled-components"
 import BasketItem from "./BasketItem"
 import { Link } from "react-router-dom";
 
+const BasketInfo = styled.ul`
+    text-align: center;
+`
+
+const BasketList = styled.ul`
+    list-style: none;
+    text-align: center;
+    align-self: center;
+`
+
 
 const Basket = ({itemsInBasket, basketTotal, removeItemFromBasket}) => {
     
@@ -22,8 +32,9 @@ const Basket = ({itemsInBasket, basketTotal, removeItemFromBasket}) => {
         return(
             <BasketItem 
                 key={index}
-                index={index}
+                id={item.id}
                 item={item}
+                itemsInBasket={itemsInBasket}
                 removeItemFromBasket={removeItemFromBasket}
 
             />
@@ -31,13 +42,13 @@ const Basket = ({itemsInBasket, basketTotal, removeItemFromBasket}) => {
     }) 
 
     return(
-        <>
-        <ul>
+        <BasketInfo>
+        <BasketList>
             {basketListItems}
-        </ul>
+        </BasketList>
         <p>Total: <b>£{basketTotal}</b></p>
         <Link to="/checkout">Go to checkout?</Link>
-        </>
+        </BasketInfo>
     )
 }
 

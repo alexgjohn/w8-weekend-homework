@@ -5,7 +5,8 @@ const StyledItem = styled.li`
     padding: 40px;
     text-align: center;
     margin: 2px;
-    background-color: #d0f4ef;
+    background-color: #31a8f2;
+    border-radius: 5%;
 `
 
 const ProductImage = styled.img`
@@ -16,7 +17,6 @@ const ProductImage = styled.img`
 const Product = ({product, addItemToBasket}) => {
 
     const handleClick = () => {
-        console.log(`${product.name} got clicked!`)
         addItemToBasket(product)
     }
 

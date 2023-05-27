@@ -1,16 +1,18 @@
-
-
+import styled from "styled-components"
 import Header from './components/Header';
-import CircusShopContainer from './containers/ProductsContainer';
 import RouterContainer from './containers/RouterContainer';
+
+const Background = styled.div`
+  background-color: lightpink;
+`
 
 function App() {
   return (
-    <div className="App">
+    <Background className="App">
       <Header/>
       <RouterContainer/>
       
-    </div>
+    </Background>
   );
 }
 
