@@ -12,7 +12,7 @@ const Logo = styled.h1`
 const Header = () => {
 
     return(
-        <Logo>Big Top Circus Shop</Logo>
+        <Logo id="logo">Big Top Circus Shop</Logo>
     )
 }
 
