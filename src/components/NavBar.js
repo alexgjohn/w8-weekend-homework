@@ -20,7 +20,7 @@ const NavBar = () => {
 
 
     return(
-        <StyledNavBar>
+        <StyledNavBar id="nav-bar">
             <li>
                 <Link to="/">Home <HomeIcon/></Link>
             </li>

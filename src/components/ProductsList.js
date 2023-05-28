@@ -24,7 +24,7 @@ const ProductsList = ({products, addItemToBasket}) => {
     })
 
     return(
-        <StyledList>
+        <StyledList id="products-list">
             {productListItems}
         </StyledList>
     )
