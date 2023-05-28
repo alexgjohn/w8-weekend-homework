@@ -21,6 +21,7 @@ const Checkout = ({basketTotal, clearBasket, applyDiscount}) => {
         navigate("/thank-you")
     }
 
+
     return(
         <CheckoutContent>
             <p>You owe us <b>£{basketTotal}</b></p>

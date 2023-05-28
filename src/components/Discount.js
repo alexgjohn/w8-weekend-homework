@@ -1,17 +1,28 @@
 import styled from "styled-components"
 import { useState } from "react"
+import triviaQuestionList from "../triviaQuestionList"
 
 const Discount = ({applyDiscount}) => {
 
-    const [userAnswer, setUserAnswer] = useState("") 
-    const [discountApplied, setDiscountApplied] = useState(false)
+    const getRandomInteger = () => {
+        const randomDecimal = Math.random()
 
-    const triviaQuestion = {
-        question: "Which Simpsons character shot Mr. Burns? (First and last name)",
-        correctAnswer: "Maggie Simpson"
+        const randomInteger = Math.floor(randomDecimal * 10)
+
+        return(randomInteger)
     }
 
-    //this currently does nothing at all!
+    const randomIndex = getRandomInteger()
+
+    const [userAnswer, setUserAnswer] = useState("")
+    const [discountApplied, setDiscountApplied] = useState(false) 
+    
+
+    //ideally, what i'd like is to have a list of trivia question objects imported and a function which randomly selects one for each new user/page refresh
+    
+
+    const [triviaQuestion, setTriviaQuestion] = useState(triviaQuestionList[randomIndex])
+
 
 
     const handleAnswerChange = (event) => {
@@ -24,6 +35,9 @@ const Discount = ({applyDiscount}) => {
         if (userAnswer.toLowerCase() === triviaQuestion.correctAnswer.toLowerCase() && !discountApplied) {
             applyDiscount()
             setDiscountApplied(true)
+            const nextQuestion = triviaQuestionList[randomIndex]
+            setTriviaQuestion(nextQuestion)
+            
             
         }
         setUserAnswer("")
